@@ -1,0 +1,87 @@
+.calendar {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.calendar .days {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #ccc;
+
+  font-size: 14px;
+  padding: 1%;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar .body .cell {
+  position: relative;
+  height: 5em;
+  border-right: 1px solid #eee;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  /* background: yellow; */
+}
+
+.calendar .body .row {
+  border-bottom: 1px solid #eee;
+}
+
+.calendar .body .row:last-child {
+  border-bottom: none;
+}
+
+.calendar .body .cell:last-child {
+  border-right: none;
+}
+
+.calendar .body .cell .number {
+  position: absolute;
+  font-size: 82.5%;
+  line-height: 1;
+  top: 0.75em;
+  right: 0.75em;
+  font-weight: 700;
+}
+
+.calendar .body .disabled {
+  color: rgb(120, 122, 125);
+  background: rgb(120, 122, 125);
+  pointer-events: none;
+}
+
+.calendar .body .weekend {
+  background-color: yellow;
+}
+
+.calendar .body .weekday {
+  color: white;
+  background-color: green;
+}
+
+.calendar .body .holiday {
+  color: white;
+  background-color: red;
+}
+
+.calendar .body .cell .bg {
+  font-weight: 700;
+  line-height: 1;
+  color: #1a8fff;
+  opacity: 0;
+  font-size: 8em;
+  position: absolute;
+  top: -0.2em;
+  right: -0.05em;
+  transition: 0.25s ease-out;
+  letter-spacing: -0.07em;
+}
+
+.calendar .body .col {
+  flex-grow: 0;
+  flex-basis: calc(100% / 7);
+  width: calc(100% / 7);
+}

@@ -1,24 +1,19 @@
 import React from "react";
 import dateFns from "date-fns";
+import Calendar from "../Calendar/Calendar";
 import "./Display.css";
 
-export default class Display extends Component {
-  constructor() {
-    super();
-  }
-
+export default class Display extends React.Component {
   state = {
     StartDate: "03/7/2018",
     NumberOfDays: 5
   };
 
-  // Waits for onBlur event to change startDate
   async DateChange(e) {
     console.log(e);
     await this.setState({ StartDate: e.target.value });
   }
 
-  // Waits for onBlur event to change NumberofDays
   async MaxDateChange(e) {
     console.log(e);
     await this.setState({ NumberOfDays: e.target.value });
@@ -36,6 +31,7 @@ export default class Display extends Component {
       Start = dateFns.addMonths(Start, 1);
     }
 
+    console.log(<Calendars />);
     return (
       <div>
         Start Date:{" "}
@@ -48,8 +44,16 @@ export default class Display extends Component {
           defaultValue={this.state.NumberOfDays}
           onBlur={this.MaxDateChange.bind(this)}
         />
-        Country Code:
+        Country Code
         <input />
+        {Calendars.map(A => {
+          return (
+            <Calendar
+              MaxDays={A.RemainingDays}
+              StartDate={new Date(A.StartDate)}
+            />
+          );
+        })}
       </div>
     );
   }
