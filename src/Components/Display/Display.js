@@ -25,6 +25,17 @@ export default class Display extends Component {
   }
 
   render() {
+    let Calendars = [];
+    var result = dateFns.addDays(this.state.StartDate, this.state.NumberOfDays);
+    let Start = new Date(this.state.StartDate);
+    while (result >= Start) {
+      Calendars.push({
+        StartDate: Start,
+        RemainingDays: dateFns.differenceInCalendarDays(result, Start)
+      });
+      Start = dateFns.addMonths(Start, 1);
+    }
+
     return (
       <div>
         Start Date:{" "}
